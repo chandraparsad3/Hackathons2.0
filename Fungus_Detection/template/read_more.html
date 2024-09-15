@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read More - Fungus Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='read_more.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body, html {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f8f7; /* Changed background color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #28a745; /* Background color for the navbar */
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+             
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a {
+    text-decoration: none; /* Remove underline */
+}
+
+
+        nav ul li a:hover {
+            background-color: transparent; /* Hover effect */
+            border-radius: 5px;
+            
+        }
+        /* Main Content Wrapper */
+        .main-content {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-content h1 {
+            color: #2e7d32; /* Green color for the heading */
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        /* Fungus Container */
+        .fungus-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .fungus-item {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .fungus-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .fungus-item h2 {
+            color: #2e7d32;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .fungus-item p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('read_more') }}">Read More</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <h1>Most Common Fungus In Our Environment</h1>
+
+        <div class="fungus-container">
+            <!-- Column 1 -->
+            <div class="column">
+                <div class="fungus-item">
+                    <h2>Aspergillus</h2>
+                    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcDT-yeNR4Mvtl5qxJ3IjID4Ix6UPR_92SpQ&s" target="_blank">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcDT-yeNR4Mvtl5qxJ3IjID4Ix6UPR_92SpQ&s" alt="Aspergillus Image">
+                    </a>
+                    <p class="location">Location: Found in soil, decaying organic matter, dust, and air conditioning systems. It is common in damp indoor environments.</p>
+                </div>
+                <div class="fungus-item">
+                    <h2>Cladosporium</h2>
+                    <a href="https://www.inspq.qc.ca/sites/default/files/images/moisissures/Cladosporium_llspq00845_sphaerospermum.jpg" target="_blank">
+                        <img src="https://www.inspq.qc.ca/sites/default/files/images/moisissures/Cladosporium_llspq00845_sphaerospermum.jpg" alt="Cladosporium Image">
+                    </a>
+                    <p class="location">Location: Present in both indoor and outdoor environments, commonly found on plants, in soil, and household dust.</p>
+                </div>
+                <div class="fungus-item">
+                    <h2>Stachybotrys</h2>
+                    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKrEVLjjor0RsuLKB-92dFVH8spaB8RbnMA&s" target="_blank">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkKrEVLjjor0RsuLKB-92dFVH8spaB8RbnMA&s" alt="Stachybotrys Image">
+                    </a>
+                    <p class="location">Location: Found in buildings with water damage, on wallpaper, ceiling tiles, and insulation materials.</p>
+                </div>
+            </div>
+        
+            <!-- Column 2 -->
+            <div class="column">
+                <div class="fungus-item">
+                    <h2>Penicillium</h2>
+                    <a href="https://www.inspq.qc.ca/sites/default/files/images/moisissures/penicillium_chrysogenum.jpg" target="_blank">
+                        <img src="https://www.inspq.qc.ca/sites/default/files/images/moisissures/penicillium_chrysogenum.jpg" alt="Penicillium Image">
+                    </a>
+                    <p class="location">Location: Common in soil, decaying vegetation, indoor air, and household dust.</p>
+                </div>
+                <div class="fungus-item">
+                    <h2>Alternaria</h2>
+                    <a href="https://www.researchgate.net/publication/272675918/figure/fig1/AS:269565103964161@1441280737055/Microscopy-of-the-culture-from-clinical-isolate-of-the-leg-showed-prominent-growth-of.png" target="_blank">
+                        <img src="https://www.researchgate.net/publication/272675918/figure/fig1/AS:269565103964161@1441280737055/Microscopy-of-the-culture-from-clinical-isolate-of-the-leg-showed-prominent-growth-of.png" alt="Alternaria Image">
+                    </a>
+                    <p class="location">Location: Common in soil, air, and plant debris. Found indoors in damp areas like bathrooms and basements.</p>
+                </div>
+                <div class="fungus-item">
+                    <h2>Rhizopus</h2>
+                    <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgjx9JL4ulhOrox-TsVzHwUPN9lqhsCVlRbg&s" target="_blank">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgjx9JL4ulhOrox-TsVzHwUPN9lqhsCVlRbg&s" alt="Rhizopus Image">
+                    </a>
+                    <p class="location">Location: Found in soil, decaying fruits, vegetables, and bread. Also found in compost.</p>
+                </div>
+            </div>
+         <!-- Column 3 -->
+         <div class="column">
+            <div class="fungus-item">
+                <h2>Candida</h2>
+                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrvSAbQz5cNzDzjuLw5VvklTs2OB5s5wjJA&s" target="_blank">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrvSAbQz5cNzDzjuLw5VvklTs2OB5s5wjJA&s" alt="Candida Image">
+                </a>
+                <p class="location">Location: Found on human skin, in the mouth, intestines, and hospitals.</p>
+            </div>
+            <div class="fungus-item">
+                <h2>Fusarium</h2>
+                <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUhhqWn3scC7I6cEYtwDygUfEvPc9KbECWw&s" target="_blank">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUhhqWn3scC7I6cEYtwDygUfEvPc9KbECWw&s" alt="Fusarium Image">
+                </a>
+                <p class="location">Location: Found in soil, plants, and water. Often contaminates grains.</p>
+            </div>
+            <div class="fungus-item">
+                <h2>Cryptococcus</h2>
+                <a href="https://s3-eu-west-1.amazonaws.com/ppreviews-plos-725668748/942971/preview.jpg" target="_blank">
+                    <img src="https://s3-eu-west-1.amazonaws.com/ppreviews-plos-725668748/942971/preview.jpg" alt="Cryptococcus Image">
+                </a>
+                <p class="location">Location: Found in soil, pigeon droppings, and decaying wood.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

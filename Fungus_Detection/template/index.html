@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungus Detection Dashboard</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0f2f1; /* Light green background color */
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #28a745; /* Background color for the navbar */
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+             
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a {
+    text-decoration: none; /* Remove underline */
+}
+
+
+        nav ul li a:hover {
+            background-color: transparent; /* Hover effect */
+            border-radius: 5px;
+            
+        }
+          
+        /* Main Content */
+        .main-content {
+            background-color: #c8e6c9; /* Slightly darker green background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 90px); /* Adjust for navbar height */
+            text-align: center;
+            padding: 20px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        .title {
+            font-size: 36px;
+            color: #2e7d32; /* Darker green for the title */
+            margin-bottom: 20px; /* Space between title and button */
+        }
+
+        .predict-btn {
+            background-color: #28a745; /* Green background color for the button */
+            color: #fff; /* White text color */
+            padding: 10px 20px; /* Padding for the button */
+            font-size: 16px; /* Font size for the button */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+        .predict-btn:hover {
+            background-color: #1e7e34; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .predict-btn:focus {
+            outline: none; /* Remove default focus outline */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li> <!-- Home link -->
+            <li><a href="{{ url_for('about') }}">About</a></li> <!-- About page link -->
+            <li><a href="{{ url_for('predict') }}">Predict</a></li> <!-- Predict page link -->
+            <li><a href="{{ url_for('read_more') }}">Read More</a></li> <!-- Updated "Read More" link -->
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1 class="title">IoT Based Fungus Detection System</h1>
+        <p>Welcome to the Fungus Detection Dashboard. Use this system to predict and analyze fungus presence using IoT technology.</p>
+        <a href="{{ url_for('predict') }}" class="predict-btn">Predict Fungus</a> <!-- Use <a> tag with class for styling -->
+    </div>
+</body>
+</html>

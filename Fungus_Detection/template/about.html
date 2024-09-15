@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page - IoT Based Fungus Detection System</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0f2f1; /* Light green background color */
+            font-family: Arial, sans-serif;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #28a745; /* Background color for the navbar */
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: transparent; /* Hover effect */
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: #c8e6c9; /* Slightly darker green background */
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section {
+            width: 100%;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section h1 {
+            font-size: 36px;
+            color: #2e7d32; /* Darker green for the title */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 24px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            color: #2e7d32;
+            font-weight: bold;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Content Alignment */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .content-item {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-item.left {
+            text-align: left;
+        }
+
+        .content-item.right {
+            text-align: right;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .content-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict</a></li>
+            <li><a href="{{ url_for('read_more') }}">Read More</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <div class="main-content">
+        <section class="about-section">
+            <h1>About Our Project</h1>
+            <div class="content-container">
+                <div class="content-item left">
+                    <h2 align="center">Our Vision</h2>
+                    <p>
+                        Our vision is to revolutionize environmental health and safety through the integration of IoT and AI technologies. By creating a smart and efficient fungus detection system, we aim to improve air quality management in critical areas such as hospitals, ensuring healthier spaces for patients and staff alike.
+                    </p>
+                </div>
+
+                <div class="content-item right">
+                    <h2 align="center">How It Works</h2>
+                    <p>
+                        Our system employs a variety of sensors to monitor environmental factors that can lead to fungal growth. The DHT11 sensor tracks temperature and humidity, while the MQ7 and MQ135 sensors detect harmful gases that can signal poor air quality. The LDR sensor measures light intensity, and the BMP180 assesses pressure changes. Data from these sensors is processed through machine learning algorithms, which detect anomalies and issue timely alerts, enabling proactive measures against potential fungal infections.
+                    </p>
+                </div>
+
+                <div class="content-item left">
+                    <h2 align="center">Our Commitment</h2>
+                    <p>
+                        We are committed to continuous innovation and improvement. Our goal is to expand the capabilities of our fungus detection system to cover more environments and add additional layers of accuracy and predictive capabilities. We believe that technology can make spaces safer, and we are dedicated to pushing the boundaries of what's possible.
+                    </p>
+                </div>
+
+                <div class="content-item right">
+                    <h2 align="center">Why Fungi Are Dangerous</h2>
+                    <p>
+                        Fungi can pose significant health risks, particularly in indoor environments. They thrive in damp and poorly ventilated areas, and their spores can become airborne, leading to respiratory issues and allergic reactions. Certain types of fungi produce mycotoxins, which can be harmful or even toxic if inhaled or ingested. This makes it crucial to detect and manage fungal growth early to prevent health hazards and maintain a safe environment. Our system helps address these concerns by providing timely alerts and actionable insights, reducing the risk of fungal-related health issues.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
