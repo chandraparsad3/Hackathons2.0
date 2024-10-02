@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identify Fungus</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0f2f1; /* Light green background color */
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #28a745; /* Background color for the navbar */
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: transparent; /* Hover effect */
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: #c8e6c9; /* Slightly darker green background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 90px); /* Adjust for navbar height */
+            text-align: center;
+            padding: 20px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+        }
+
+        .title {
+            font-size: 36px;
+            color: #2e7d32; /* Darker green for the title */
+            margin-bottom: 20px; /* Space between title and button */
+        }
+
+        /* File Input Styling */
+        input[type="file"] {
+            display: none; /* Hide default file input */
+        }
+
+        .file-upload {
+            display: inline-block;
+            background-color: #28a745; /* Green background */
+            color: white; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .file-upload:hover {
+            background-color: #1e7e34; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Submit Button Styling */
+        .submit-btn {
+            background-color: #28a745; 
+            color: #fff; 
+            padding: 10px 20px; 
+            font-size: 16px; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 15px; /* Space between file input and button */
+        }
+
+        .submit-btn:hover {
+            background-color: #1e7e34; /* Darker green on hover */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .submit-btn:focus {
+            outline: none; /* Remove default focus outline */
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 60px; /* Adjusted to ensure button doesn't overlap */
+            right: 20px;
+            width: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        .chatbot-header {
+            background: linear-gradient(to right, #28a745, #1e7e34); /* Gradient background */
+            color: white;
+            padding: 15px; /* Increased padding for better appearance */
+            border-radius: 10px 10px 0 0; /* Rounded corners */
+            text-align: center;
+            font-size: 22px; /* Larger font size */
+            font-weight: bold; /* Bold font */
+            position: relative; /* Position relative for close button */
+            animation: slideDown 0.5s ease; /* Slide-down animation */
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-body {
+            height: 300px;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: #c8e6c9; /* Light green background for chatbot body */
+        }
+
+        .chatbot-body p {
+            background-color: #fff; /* White background for messages */
+            padding: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for messages */
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+        }
+
+        .chatbot-input select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px; /* Space between dropdown and button */
+        }
+
+        .chatbot-input button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            background-color: #1e7e34;
+        }
+
+        .close-chatbot {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        /* Chatbot Toggle Button */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px; /* Adjust for spacing */
+            right: 20px; /* Adjust for spacing */
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 100; /* Ensure it appears above other elements */
+        }
+
+        .chatbot-toggle:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('read_more') }}">Read More</a></li>
+            <li><a href="{{ url_for('predict') }}">Predict Fungus</a></li>
+            <li><a href="{{ url_for('identify_fungus') }}">Identify Fungus</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <h1 class="title">Fungus Identification</h1>
+        <label class="file-upload" for="fungusImage">Choose Fungus Image</label>
+        <input type="file" id="fungusImage" name="fungusImage" accept="image/*" required>
+        <button class="submit-btn" type="submit">Identify Fungus</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.querySelector('.submit-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const imageFile = document.getElementById('fungusImage').files[0];
+            formData.append('fungusImage', imageFile);
+
+            fetch('/identify', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('result').innerText = `Error: ${data.error}`;
+                } else {
+                    document.getElementById('result').innerText = `Identified Fungus: ${data.type}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'Error identifying fungus.';
+            });
+        });
+    </script>
+</body>
+</html>
